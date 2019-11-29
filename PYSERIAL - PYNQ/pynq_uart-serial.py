@@ -23,4 +23,4 @@ if __name__ == "__main__" :
     th_1 = threading.Timer(0.5 , serial_read_thread)
     th_1.start()
     time.sleep(10)
-    #zynq_uart.close()
+    zynq_uart.close()
