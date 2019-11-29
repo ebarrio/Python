@@ -2,7 +2,7 @@
 try:
     import serial
 except ImportError:
-    print('Pyserial s not installed.')
+    print('Pyserial is not installed.')
     raise
 import time
 import threading
