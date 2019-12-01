@@ -16,7 +16,7 @@ SERIAL_PORT_1 = 'COM1'
 SERIAL_PORT_2 = 'COM2'
 SERIAL_BAUD = 115200
 
-def serial_read_thread():
+def serial_echo_thread():
     ser1.write(SERIAL_MSG.encode())
     while(True):
         if(ser1.isOpen() and ser2.isOpen()):
