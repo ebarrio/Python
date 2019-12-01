@@ -20,22 +20,23 @@ def serial_echo_thread():
     ser1.write(SERIAL_MSG.encode())
     while(True):
         if(ser1.isOpen() and ser2.isOpen()):
+            time.sleep(0.5)
             if(ser2.inWaiting()>0):
-                time.sleep(0.5)
                 msg_read = ser2.read(SERIAL_MSG_BYTES)
-                print(msg_read)
-                ser2.write(msg_read)
-                time.sleep(0.5)
+            print(msg_read)
+            ser2.write(msg_read)
+            time.sleep(0.5)
+            if(ser1.inWaiting()>0):
                 msg_read = ser1.read(SERIAL_MSG_BYTES)
-                print(msg_read)
-                ser1.write(msg_read)
+            print(msg_read)
+            ser1.write(msg_read)
                 
 
 if __name__ == "__main__" :
     ser1 = serial.Serial(SERIAL_PORT_1,SERIAL_BAUD)
     ser2 = serial.Serial(SERIAL_PORT_2,SERIAL_BAUD)
     time.sleep(1)
-    th_1 = threading.Thread(target = serial_read_thread)
+    th_1 = threading.Thread(target = serial_echo_thread)
 
     th_1.start()
     time.sleep(60)
